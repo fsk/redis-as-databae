@@ -1,3 +1,5 @@
+server:
+  port: 8081
 spring:
   application:
     name: redis-as-database
@@ -18,3 +20,12 @@ logging:
   level:
     org.fsk.redisasdatabase: DEBUG
     org.springframework: INFO
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,metrics,prometheus
+  metrics:
+    tags:
+      application: ${spring.application.name}

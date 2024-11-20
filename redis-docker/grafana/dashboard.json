@@ -1,0 +1,40 @@
+{
+    "dashboard": {
+      "title": "Redis Performance Dashboard",
+      "panels": [
+        {
+          "title": "Requests Per Second",
+          "type": "graph",
+          "datasource": "Prometheus",
+          "targets": [
+            {
+              "expr": "rate(performance_test_seconds_count[1m])",
+              "legendFormat": "RPS"
+            }
+          ]
+        },
+        {
+          "title": "Response Time",
+          "type": "graph",
+          "datasource": "Prometheus",
+          "targets": [
+            {
+              "expr": "rate(performance_test_seconds_sum[1m]) / rate(performance_test_seconds_count[1m])",
+              "legendFormat": "Avg Response Time"
+            }
+          ]
+        },
+        {
+          "title": "Error Rate",
+          "type": "graph",
+          "datasource": "Prometheus",
+          "targets": [
+            {
+              "expr": "rate(performance_test_error_total[1m])",
+              "legendFormat": "Errors/sec"
+            }
+          ]
+        }
+      ]
+    }
+  }
